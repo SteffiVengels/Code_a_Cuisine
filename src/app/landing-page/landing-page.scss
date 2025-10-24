@@ -1,0 +1,73 @@
+main {
+
+    height: calc(100vh - 272px);
+    width: 100%;
+    padding: 136px 65px;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+span {
+    font-size: 48px;
+    color: #F5F5DC;
+    font-weight: 600;
+}
+
+
+aside {
+    background-image: url('../../../public/img/Visuals.png');
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+    margin-right: 42px;
+    min-width: 480px;
+    background-color: #396039;
+}
+
+.container {
+    background-color: #396039;
+    display: flex;
+    flex-direction: row;
+}
+
+nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 16px;
+}
+
+p {
+    font-family: 'Ubuntu';
+    font-size: 32px;
+    color: #FAF0E6;
+    font-weight: 500;
+    margin: 0;
+}
+
+a {
+    font-weight: 500;
+    color: #FAF0E6;
+    font-size: 20px;
+    text-decoration: none;
+    padding: 16px 26px;
+    transition: all 0.5s ease;
+    cursor: pointer;
+
+    &:hover {
+        background-color: #627A54;
+        transition: all 0.5s ease;
+    }
+}
+
+
+
+h1 {
+    margin-bottom: 64px;
+}
+
+section {
+    margin-top: 104px;
+}

@@ -1,1 +1,42 @@
-/* You can add global styles to this file, and also import other style files */
+@font-face {
+    font-family: 'Quicksand';
+    src: url('/fonts/Quicksand/Quicksand-VariableFont_wght.ttf') format('truetype');
+}
+
+
+@font-face {
+    font-family: 'Ubuntu';
+    src: url('/fonts/Ubuntu/Ubuntu-Regular.ttf') format('truetype');
+}
+
+body {
+    font-family: 'Quicksand';
+    margin: 0;
+    background-color: #FFFFFF;
+}
+
+h1 {
+    font-family: 'Ubuntu';
+    font-weight: 700;
+    font-size: 104px;
+    color: #FAF0E6;
+    margin: 0;
+}
+
+button.creme {
+    font-family: 'Quicksand';
+    background-color: #FAF0E6;
+    color: #008000;
+    font-weight: 600;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 16px 26px;
+    border: none;
+    transition: 0.5s all;
+
+    &:hover {
+        background-color: #FAE0C6;
+        font-weight: 700;
+        transition: 0.5s all;
+    }
+}

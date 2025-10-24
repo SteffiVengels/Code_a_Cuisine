@@ -1,0 +1,27 @@
+footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 136px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding-left: 68px;
+    color: #FAF0E6;
+    font-size: 16px;
+    font-weight: 400;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+a {
+    color: #FAF0E6;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+p {
+    margin: 0;
+}
