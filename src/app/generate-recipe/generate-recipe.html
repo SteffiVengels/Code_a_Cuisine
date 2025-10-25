@@ -1,1 +1,48 @@
-<p>generate-recipe works!</p>
+<div class="container">
+    <main>
+        <h2>Generate recipe</h2>
+        <span>Got random stuff in your kitchen? Pop it in-we've got the perfect recipe waiting.</span>
+
+        <!-- Two-column layout -->
+        <div class="ingredients-grid">
+            <!-- Left: input form -->
+            <div class="panel">
+                <form id="ingredientForm">
+                    <div class="ingredientName">
+                        <label for="ingredientName">Ingredient</label>
+                        <input id="ingredientName" name="ingredientName" type="text" required>
+                    </div>
+
+                    <div class="servingSize">
+                        <label for="servingSize">Serving size</label>
+                        <div class="servingSizeInputGroup">
+                            <input id="servingSize" name="servingSize" type="number" min="0" step="any"
+                                placeholder="100" required>
+                            <select id="servingSizeUnit" name="servingSizeUnit" required>
+                                <option value="gram">gram</option>
+                                <option value="piece">piece</option>
+                                <option value="ml">ml</option>
+                            </select>
+                            <button id="addBtn" type="submit" title="Add">
+                            </button>
+                        </div>
+
+                    </div>
+
+                </form>
+                <div id="formError" style="color:#b00020; margin-top:8px; display:none;">Please fill all fields
+                    correctly.
+                </div>
+            </div>
+
+            <!-- Right: list -->
+            <div class="panel listPanel">
+                <p>List of your ingredients</p>
+                <ol id="ingredientsList">
+                    <!-- Items will be rendered here -->
+                </ol>
+                <div id="emptyState">No ingredients yet.</div>
+            </div>
+        </div>
+    </main>
+</div>

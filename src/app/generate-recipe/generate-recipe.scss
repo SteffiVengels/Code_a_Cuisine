@@ -1,0 +1,155 @@
+.container {
+    color: #1E5515;
+    padding: 136px 65px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+h2 {
+    margin: 0;
+    padding-bottom: 24px;
+}
+
+span {
+    font-size: 24px;
+    font-weight: 500;
+    padding-bottom: 64px;
+    color: #10310B;
+    text-align: center;
+}
+
+.ingredients-grid {
+    display: flex;
+    justify-content: center;
+    gap: 56px;
+    width: 100%;
+}
+
+.panel {
+    border-radius: 20px;
+    padding: 24px;
+    background-color: #3960394D;
+
+    >p {
+        font-weight: 500;
+        font-size: 20px;
+        color: #10310B;
+        margin: 0;
+    }
+}
+
+#emptyState {
+    color: #666;
+    font-size: 14px;
+}
+
+#ingredientForm {
+    display: flex;
+    flex-direction: row;
+    gap: 32px;
+}
+
+label {
+    font-weight: 500;
+    font-size: 20px;
+    color: #10310B;
+}
+
+#addBtn {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    background-image: url('/img/button_add_to.png');
+    width: 36px;
+    height: 36px;
+    transition: all 0.2s ease;
+
+    &:hover {
+        background-image: url('/img/button_add_to_hover.png');
+    }
+
+    &:active {
+        background-image: url('/img/button_add_to_click.png');
+    }
+}
+
+select {
+    font-weight: 500;
+    font-size: 16px;
+    color: #10310B;
+    background-color: #FAF0E6;
+    border-radius: 48px !important;
+    border: none !important;
+    width: 75px !important;
+    padding: 8px 6px;
+
+    &:focus {
+        outline: none !important;
+    }
+
+    >option {
+        background-color: transparent;
+    }
+}
+
+input {
+    background-color: #FAF0E6;
+    border: none !important;
+    border-radius: 20px !important;
+    padding: 8px 12px;
+    color: #10310B;
+    font-size: 16px;
+    font-weight: 500;
+    height: 20px;
+
+    &:focus {
+        outline: none !important;
+    }
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+#servingSize {
+    width: 36px;
+}
+
+.ingredientName {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 300px;
+}
+
+.servingSize {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.servingSizeInputGroup {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+}
+
+.listPanel {
+    width: 100%;
+    max-width: 478px;
+}
