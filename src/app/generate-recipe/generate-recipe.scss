@@ -55,6 +55,7 @@ span {
     display: flex;
     flex-direction: row;
     gap: 32px;
+    margin-bottom: 64px;
 }
 
 label {
@@ -81,6 +82,22 @@ label {
     }
 }
 
+select,
+::picker(select) {
+    appearance: base-select;
+}
+
+::picker(select) {
+    background: rgb(195, 207, 195);
+    border: none;
+}
+
+::picker-icon {
+    margin: 0;
+
+
+}
+
 select {
     font-weight: 500;
     font-size: 16px;
@@ -89,16 +106,34 @@ select {
     border-radius: 48px !important;
     border: none !important;
     width: 75px !important;
-    padding: 8px 6px;
+    padding: 8px 10px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0;
 
     &:focus {
         outline: none !important;
     }
 
     >option {
-        background-color: transparent;
+        background: rgb(195, 207, 195);
+        border-radius: 48px;
+        font-weight: 500;
+        font-size: 16px;
+        color: #10310B;
+
+        &:hover {
+            background: #FAF0E6;
+        }
+
+        &::checkmark {
+            display: none;
+        }
     }
 }
+
 
 input {
     background-color: #FAF0E6;
@@ -152,4 +187,86 @@ input[type=number] {
 .listPanel {
     width: 100%;
     max-width: 478px;
+}
+
+.list-content {
+    display: flex;
+    flex-direction: row;
+
+
+    >span {
+        color: black;
+        font-size: 18px;
+        font-weight: 500;
+        padding-bottom: 0;
+        display: flex;
+        justify-content: flex-start;
+
+        &:first-child {
+            width: 80px;
+            padding-left: 8px;
+        }
+    }
+
+}
+
+.list-actions {
+    display: flex;
+    gap: 16px;
+    >button {
+        height: 19px;
+        width: 19px;
+        border: none;
+        background-color: transparent;
+        cursor: pointer;
+    }
+}
+
+.edit-btn {
+    background-image: url('/img/edit.png');
+
+    &:hover {
+        background-image: url('/img/edit_hover.png');
+    }
+
+    &:active {
+        background-image: url('/img/edit_onclick.png');
+    }
+}
+
+.delete-btn {
+    background-image: url('/img/delete.png');
+
+    &:hover {
+        background-image: url('/img/delete_hover.png');
+    }
+
+    &:active {
+        background-image: url('/img/delete_onclick.png');
+    }
+}
+
+
+.list-item {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+ol {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    padding: 4px 8px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    &:hover {
+        background-color: rgba(250, 240, 230, 0.6);
+    }
 }
