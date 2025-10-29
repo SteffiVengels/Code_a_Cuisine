@@ -99,6 +99,7 @@ select,
 }
 
 select {
+    cursor: pointer;
     font-weight: 500;
     font-size: 16px;
     color: #10310B;
@@ -187,7 +188,8 @@ input[type=number] {
 .listPanel {
     width: 100%;
     max-width: 478px;
-    position: relative;;
+    position: relative;
+    ;
 }
 
 .list-content {
@@ -214,12 +216,14 @@ input[type=number] {
 .list-actions {
     display: flex;
     gap: 16px;
+
     >button {
         height: 19px;
         width: 19px;
         border: none;
         background-color: transparent;
         cursor: pointer;
+        transition: all 0.2s ease;
     }
 }
 
@@ -247,6 +251,18 @@ input[type=number] {
     }
 }
 
+.save-btn {
+    background-image: url('/img/check.png');
+
+    &:hover {
+        background-image: url('/img/check_hover.png');
+    }
+
+    &:active {
+        background-image: url('/img/check_click.png');
+    }
+}
+
 
 .list-item {
     display: flex;
@@ -267,8 +283,18 @@ li {
     padding: 4px 8px;
     border-radius: 8px;
     transition: all 0.3s ease;
+
     &:hover {
         background-color: rgba(250, 240, 230, 0.6);
+    }
+}
+
+// Edit-Modus: kein Hover-Highlight und keine Transition
+li.editing {
+    transition: none;
+
+    &:hover {
+        background-color: transparent;
     }
 }
 
@@ -276,4 +302,28 @@ button.green {
     position: absolute;
     right: 0;
     bottom: -118px;
+}
+
+.edit {
+    display: flex;
+    align-items: center;
+
+    >p {
+        color: black;
+        font-weight: 500;
+        font-size: 18px;
+        padding-left: 8px;
+    }
+
+    >.servingSizeInputGroup {
+
+        >input {
+            margin-left: 8px;
+        }
+    }
+
+    >span {
+        margin-left: 16px;
+    }
+
 }

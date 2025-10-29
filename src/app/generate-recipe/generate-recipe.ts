@@ -27,6 +27,11 @@ export class GenerateRecipe {
 
   ingredients$: Observable<Ingredient[]>;
 
+  // Editierzustand
+  editingId: string | null = null;
+  editServingSize: number | null = null;
+  editServingSizeUnit: 'gram' | 'piece' | 'ml' = 'gram';
+
   constructor(private firestore: Firestore) {
     const colRef = collection(this.firestore, 'ingredients');
     const q = query(colRef, orderBy('servingSize', 'asc'));
@@ -46,7 +51,31 @@ export class GenerateRecipe {
   }
 
   onEdit(item: Ingredient) {
-    console.log('Edit item', item);
+    if (!item.id) return;
+    this.editingId = item.id;
+    this.editServingSize = item.servingSize;
+    this.editServingSizeUnit = item.servingSizeUnit;
+  }
+
+  onCancelEdit() {
+    this.editingId = null;
+    this.editServingSize = null;
+    this.editServingSizeUnit = 'gram';
+  }
+
+  async onSaveEdit(item: Ingredient) {
+    if (!item.id) return;
+    const size = Number(this.editServingSize);
+    const unit = this.editServingSizeUnit;
+    if (!isFinite(size) || size <= 0 || !unit) return;
+
+    const { doc, updateDoc } = await import('firebase/firestore');
+    await updateDoc(doc(this.firestore, 'ingredients', item.id), {
+      servingSize: size,
+      servingSizeUnit: unit,
+    });
+
+    this.onCancelEdit();
   }
 
   async onDelete(item: Ingredient) {
