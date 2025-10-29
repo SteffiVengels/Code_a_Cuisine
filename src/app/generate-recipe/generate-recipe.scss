@@ -187,6 +187,7 @@ input[type=number] {
 .listPanel {
     width: 100%;
     max-width: 478px;
+    position: relative;;
 }
 
 .list-content {
@@ -269,4 +270,10 @@ li {
     &:hover {
         background-color: rgba(250, 240, 230, 0.6);
     }
+}
+
+button.green {
+    position: absolute;
+    right: 0;
+    bottom: -118px;
 }

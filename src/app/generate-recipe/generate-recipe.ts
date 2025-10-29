@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { Firestore, addDoc, collection, collectionData } from '@angular/fire/firestore';
 import { query, orderBy } from 'firebase/firestore';
 import { Observable } from 'rxjs';
+import { RouterLink, RouterLinkActive } from "@angular/router";
 
 type Ingredient = {
   id?: string;
@@ -15,7 +16,7 @@ type Ingredient = {
 @Component({
   selector: 'app-generate-recipe',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, RouterLink, RouterLinkActive],
   templateUrl: './generate-recipe.html',
   styleUrl: './generate-recipe.scss',
 })

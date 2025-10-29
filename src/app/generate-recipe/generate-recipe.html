@@ -35,11 +35,15 @@
             <div class="panel listPanel">
                 <p>List of your ingredients</p>
                 <ol id="ingredientsList">
+                    @if ((ingredients$ | async)?.length === 0) {
+                    <div id="emptyState">No ingredients yet.</div>
+                    }
                     @for (item of ingredients$ | async; track $index) {
                     <li>
                         <div class="list-item">
                             <div class="list-content">
-                                <span>• {{ item.servingSize }}{{ item.servingSizeUnit === 'piece' ? '' :  (item.servingSizeUnit === 'gram' ? 'g' : item.servingSizeUnit) }}</span>
+                                <span>• {{ item.servingSize }}{{ item.servingSizeUnit === 'piece' ? '' :
+                                    (item.servingSizeUnit === 'gram' ? 'g' : item.servingSizeUnit) }}</span>
                                 <span>{{ item.ingredientName }}</span>
                             </div>
                             <div class="list-actions">
@@ -51,10 +55,12 @@
                     </li>
                     }
                 </ol>
-                @if ((ingredients$ | async)?.length === 0) {
-                <div id="emptyState">No ingredients yet.</div>
+                @if ((ingredients$ | async)?.length !== 0) {
+                <button class="green" routerLink="/preferences" routerLinkActive="router-link-active">Next step</button>
                 }
             </div>
         </div>
     </main>
+
+
 </div>
