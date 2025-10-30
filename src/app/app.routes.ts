@@ -1,5 +1,4 @@
 import { Routes } from '@angular/router';
-import { MainContent } from './main-content/main-content';
 import { LegalNotice } from './legal-notice/legal-notice';
 import { LandingPage } from './landing-page/landing-page'; 
 import { GenerateRecipe } from './generate-recipe/generate-recipe';

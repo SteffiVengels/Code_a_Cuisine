@@ -15,6 +15,7 @@ export class Header {
   imageByRoute: Record<string, string> = {
     '': 'img/logo.png',                 // Root
     'generate-recipe': 'img/logo_green.png',
+    'preferences': 'img/logo_green.png',
     // weitere Beispiele:
     // 'about': 'img/logo_about.png',
     // 'products/list': 'img/logo_products_list.png', // exakter Pfad
@@ -37,5 +38,11 @@ export class Header {
     const url = this.router.url.split(/[?#]/)[0];   // "/foo/bar"
     const full = url.replace(/^\/+/, '');           // "foo/bar" oder ""
     return full === '';                            // true, wenn wir auf der Landing Page sind
+  }
+
+  get showBackButton(): boolean {
+    const url = this.router.url.split(/[?#]/)[0];
+    const full = url.replace(/^\/+/, '');
+    return full === 'preferences';
   }
 }

@@ -16,6 +16,7 @@ export class Footer implements OnInit, OnDestroy {
   colorByRoute: Record<string, string> = {
     '': '#FAF0E6',                 // Root
     'generate-recipe': '#1E5515',  // Beispiel
+    'preferences': '#1E5515',
     // weitere Beispiele:
     // 'about': '#A0AEC0',
     // 'products/list': '#FFB020',

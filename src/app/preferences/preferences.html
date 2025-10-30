@@ -1,1 +1,51 @@
-<p>preferences works!</p>
+<div class="container">
+    <main>
+        <section>
+            <h3>Choose your preferences</h3>
+            <div class="portions-chefs">
+                <div>
+                    <p>How many portions you need?</p>
+                </div>
+                <div>
+                    <p>How many are cooking?</p>
+                </div>
+
+            </div>
+            <form action="">
+                <div>
+                    <label for="cookingTime">
+                        <img src="img/clock.png" alt="clock">
+                        <h4>Cooking time</h4>
+                    </label>
+                    <input type="checkbox" name="cookingTime" value="20min">Quick<span>up to 20min</span>
+                    <input type="checkbox" name="cookingTime" value="25-40min">Medium<span>25-40min</span>
+                    <input type="checkbox" name="cookingTime" value=">45min">Complex<span>over 45min</span>
+                </div>
+                <div>
+                    <label for="cuisine">
+                        <img src="img/public.png" alt="earth-icon">
+                        <h4>Cuisine</h4>
+                    </label>
+                    <input type="checkbox" name="cuisine" value="german">German
+                    <input type="checkbox" name="cuisine" value="italian">Italian
+                    <input type="checkbox" name="cuisine" value="indian">Indian
+                    <input type="checkbox" name="cuisine" value="japanese">Japanese
+                    <input type="checkbox" name="cuisine" value="gourmet">Gourmet
+                    <input type="checkbox" name="cuisine" value="fusion">Fusion
+                </div>
+                <div>
+                    <label for="dietPreferences">
+                        <img src="img/fork_spoon.png" alt="fork and spoon">
+                        <h4>Diet preferences</h4>
+                    </label>
+                    <input type="checkbox" name="dietPreferences" value="vegetarian">Vegetarian
+                    <input type="checkbox" name="dietPreferences" value="vegan">Vegan
+                    <input type="checkbox" name="dietPreferences" value="keto">Keto
+                    <input type="checkbox" name="dietPreferences" value="no-preferences">No preferences
+                </div>
+
+            </form>
+        </section>
+        <button class="green" type="submit">Generate a recipe</button>
+    </main>
+</div>

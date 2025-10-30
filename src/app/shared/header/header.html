@@ -6,4 +6,7 @@
         <img [src]="logoSrc" alt="Logo" />
     </a>
     }
+    @if (showBackButton) {
+    <a class="goBack" href="/generate-recipe"><img src="img/arrow-left.png" alt="">Ingredients</a>
+    }
 </header>
