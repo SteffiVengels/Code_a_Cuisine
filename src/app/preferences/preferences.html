@@ -2,90 +2,87 @@
     <main>
         <section aria-labelledby="preferences-heading">
             <h3 id="preferences-heading">Choose your preferences</h3>
-
-            <form action="">
+            <form (ngSubmit)="onSubmit()">
                 <div class="count-div">
                     <fieldset>
                         <legend>How many portions you need?</legend>
-                        <!-- hier kommen Inputs -->
+                        <div class="count-btn-div">
+                            <button type="button" (click)="decreasePortions()" class="decrease-button"></button>
+                            <input type="number" [value]="portions" readonly id="portions">
+                            <span>Portions</span>
+                            <button type="button" (click)="increasePortions()" class="increase-button">+</button>
+                        </div>
                     </fieldset>
-
                     <fieldset>
                         <legend>How many are cooking?</legend>
-                        <!-- hier kommen Inputs -->
+                        <div class="count-btn-div">
+                            <button type="button" (click)="decreaseCookers()" class="decrease-button"></button>
+                            <input type="number" [value]="cookers" readonly id="cookers">
+                            <span>Person</span>
+                            <button type="button" (click)="increaseCookers()" class="increase-button">+</button>
+                        </div>
                     </fieldset>
                 </div>
-
-
                 <div class="checkbox-div">
                     <fieldset>
                         <legend>
                             <img src="img/clock.png" alt="" aria-hidden="true">
                             <span>Cooking time</span>
                         </legend>
-
                         <div class="options">
+                            @for (time of ['quick','medium','complex']; track $index) {
                             <div class="option">
-                                <label>
-                                    <input type="checkbox" name="cookingTime" value="20min">
-                                    Quick
+                                <label [attr.for]="'cookingTime-' + time">
+                                    <input type="checkbox" [(ngModel)]="cookingTimeMap[time]"
+                                        [name]="'cookingTime-' + time" [id]="'cookingTime-' + time">
+                                    {{time | titlecase}}
                                 </label>
-                                <span class="description">up to 20 min</span>
+                                @if (time ==='quick') {
+                                <span class="description">up to 20min</span>
+                                }
+                                @if (time ==='medium') {
+                                <span class="description">25–40min</span>
+                                }
+                                @if (time ==='complex') {
+                                <span class="description">over 45min</span>
+                                }
                             </div>
-
-                            <div class="option">
-                                <label>
-                                    <input type="checkbox" name="cookingTime" value="25-40min">
-                                    Medium
-                                </label>
-                                <span class="description">25–40 min</span>
-                            </div>
-
-                            <div class="option">
-                                <label>
-                                    <input type="checkbox" name="cookingTime" value=">45min">
-                                    Complex
-                                </label>
-                                <span class="description">over 45 min</span>
-                            </div>
+                            }
                         </div>
                     </fieldset>
-
                     <fieldset>
                         <legend>
                             <img src="img/public.png" alt="" aria-hidden="true">
                             <span>Cuisine</span>
                         </legend>
                         <div class="options">
-                            <label><input type="checkbox" name="cuisine" value="german">German</label>
-                            <label><input type="checkbox" name="cuisine" value="italian">Italian</label>
-                            <label><input type="checkbox" name="cuisine" value="indian">Indian</label>
-                            <label><input type="checkbox" name="cuisine" value="japanese">Japanese</label>
-                            <label><input type="checkbox" name="cuisine" value="gourmet">Gourmet</label>
-                            <label><input type="checkbox" name="cuisine" value="fusion">Fusion</label>
+                            @for (cuisine of ['german','italian','indian','japanese','gourmet','fusion']; track $index)
+                            {
+                            <label [attr.for]="'cuisine-' + cuisine">
+                                <input type="checkbox" [(ngModel)]="cuisinesMap[cuisine]" [name]="'cuisine-' + cuisine"
+                                    [id]="'cuisine-' + cuisine">
+                                {{cuisine | titlecase}}
+                            </label>}
                         </div>
                     </fieldset>
-
                     <fieldset>
                         <legend>
                             <img src="img/fork_spoon.png" alt="" aria-hidden="true">
                             <span>Diet preferences</span>
                         </legend>
                         <div class="options">
-                            <label><input type="checkbox" name="dietPreferences" value="vegetarian">Vegetarian</label>
-                            <label><input type="checkbox" name="dietPreferences" value="vegan">Vegan</label>
-                            <label><input type="checkbox" name="dietPreferences" value="keto">Keto</label>
-                            <label><input type="checkbox" name="dietPreferences" value="no-preferences">No
-                                preferences</label>
+                            @for (diet of ['vegetarian','vegan','keto','no-preferences']; track $index) {
+                            <label [attr.for]="'diet-' + diet">
+                                <input type="checkbox" [(ngModel)]="dietPreferencesMap[diet]" [name]="'diet-' + diet"
+                                    [id]="'diet-' + diet">
+                                {{diet === 'no-preferences' ? 'No preferences' : diet | titlecase}}
+                            </label>
+                            }
                         </div>
                     </fieldset>
                 </div>
-
-
-
                 <button class="green" type="submit">Generate a recipe</button>
             </form>
         </section>
     </main>
-
 </div>

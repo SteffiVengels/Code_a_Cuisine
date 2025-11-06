@@ -37,6 +37,8 @@ section {
     margin-bottom: 32px;
 
     >fieldset {
+        padding: 0 24px;
+
         >legend {
             font-weight: 500;
             font-size: 20px;
@@ -89,7 +91,7 @@ label {
     gap: 20px;
 }
 
-.options label{
+.options label {
     display: inline-block;
     background-color: rgba(250, 240, 230, 1);
     border-radius: 30px;
@@ -113,7 +115,7 @@ label {
 }
 
 /* Wenn ausgewählt */
-.options input[type="checkbox"]:checked + label,
+.options input[type="checkbox"]:checked+label,
 .options label:has(input[type="checkbox"]:checked) {
     background-color: rgba(57, 96, 57, 0.2);
     color: #10310B;
@@ -121,6 +123,7 @@ label {
 
 fieldset {
     border: none;
+    padding: 0;
 }
 
 form {
@@ -139,9 +142,96 @@ form {
     flex-direction: column;
     align-items: center;
     gap: 12px;
+
     >span {
         font-size: 14px;
         color: #1E5515;
         font-weight: 500;
     }
+}
+
+.decrease-button {
+    background-image: url('../../../public/img/minus.png');
+    border: none;
+    height: 28px;
+    width: 28px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    &:hover {
+        background-image: url('../../../public/img/minus_hover.png');
+    }
+
+    &:active {
+        background-image: url('../../../public/img/minus_click.png');
+    }
+
+}
+
+.increase-button {
+    background-image: url('../../../public/img/plus.png');
+    border: none;
+    height: 28px;
+    width: 28px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    &:hover {
+        background-image: url('../../../public/img/plus_hover.png');
+    }
+
+    &:active {
+        background-image: url('../../../public/img/plus_click.png');
+    }
+
+}
+
+
+.count-btn-div {
+
+    padding-top: 16px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+
+    >span {
+        font-size: 20px;
+        font-weight: 500;
+        color: #10310B;
+    }
+
+    >input {
+        border: none;
+        background-color: rgba(57, 96, 57, 0.2);
+        height: 20px;
+        width: 22px;
+        font-size: 20px;
+        font-weight: 500;
+        color: #10310B;
+        text-align: center;
+        cursor: default;
+
+        &:focus {
+            outline: none;
+        }
+    }
+
+
+
+
+}
+
+/* Entfernt die Pfeile in Chrome, Edge, Safari */
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
 }
