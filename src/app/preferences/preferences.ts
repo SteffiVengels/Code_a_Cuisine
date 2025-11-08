@@ -56,6 +56,9 @@ export class Preferences {
     await addDoc(collection(this.firestore, 'settings'), data);
     console.log('Settings saved successfully');
     this.resetSelections();
+
+    const URL = 'http://localhost:5678/webhook-test/23249a46-0451-403f-8102-a0efa4745204';
+    await fetch(URL)
   }
 
 
