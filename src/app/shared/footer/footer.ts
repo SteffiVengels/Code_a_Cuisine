@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit, inject } from '@angular/core';
+import { Component, OnDestroy, OnInit, inject, HostListener } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { Subscription } from 'rxjs';
 
@@ -25,6 +25,10 @@ export class Footer implements OnInit, OnDestroy {
 
   footerColor = this.colorByRoute['*'];
 
+  private get isAppLoading(): boolean {
+    return document.body.classList.contains('app-loading');
+  }
+
   ngOnInit(): void {
     this.updateColor();
     this.sub = this.router.events.subscribe(e => {
@@ -36,7 +40,17 @@ export class Footer implements OnInit, OnDestroy {
     this.sub?.unsubscribe();
   }
 
+  // Reagiere auf Umschalten von isLoading (Preferences)
+  @HostListener('window:app-loading-changed')
+  onAppLoadingChanged() {
+    this.updateColor();
+  }
+
   private updateColor(): void {
+    if (this.isAppLoading) {
+      this.footerColor = '#FAF0E6';
+      return;
+    }
     const url = this.router.url.split(/[?#]/)[0];
     const full = url.replace(/^\/+/, '');
     const first = full.split('/')[0] || '';

@@ -1,4 +1,5 @@
 <div class="container">
+    @if (!isLoading) {
     <main>
         <section aria-labelledby="preferences-heading">
             <h3 id="preferences-heading">Choose your preferences</h3>
@@ -85,4 +86,8 @@
             </form>
         </section>
     </main>
+    }
+    @if (isLoading) {
+    <app-loading-page></app-loading-page>
+    }
 </div>

@@ -2,11 +2,12 @@ import { Component } from '@angular/core';
 import { addDoc, collection, Firestore } from '@angular/fire/firestore';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { LoadingPage } from './loading-page/loading-page';
 
 @Component({
   selector: 'app-preferences',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, LoadingPage],
   templateUrl: './preferences.html',
   styleUrl: './preferences.scss',
 })
@@ -32,9 +33,18 @@ export class Preferences {
     keto: false,
     'no-preferences': false
   };
+  private _isLoading = false;
+  get isLoading() { return this._isLoading; }
+  set isLoading(v: boolean) {
+    this._isLoading = v;
+    document.body.classList.toggle('app-loading', !!v);
+    // Notify globally so Header/Footer reagieren können
+    window.dispatchEvent(new CustomEvent('app-loading-changed', { detail: { isLoading: v } }));
+  }
 
-  
-  constructor(private firestore: Firestore) { }
+  constructor(private firestore: Firestore) {
+    this.isLoading = this._isLoading; // initial sync to body class
+  }
 
 
   decreasePortions(): void { if (this.portions > 1) this.portions--; }
@@ -46,6 +56,7 @@ export class Preferences {
 
 
   async onSubmit(): Promise<void> {
+    this.isLoading = true;
     const data = {
       portions: this.portions,
       cookers: this.cookers,
@@ -58,7 +69,20 @@ export class Preferences {
     this.resetSelections();
 
     const URL = 'http://localhost:5678/webhook-test/23249a46-0451-403f-8102-a0efa4745204';
-    await fetch(URL)
+    try {
+      const response = await fetch(URL);
+      const body: any = await response.json(); // { status: "done" }
+      if (body?.status === 'done') {
+        // navigate and keep the loading indicator active until the new page loads
+        window.location.href = '/results';
+        return;
+      }
+      // if not done, stop loading so the user can interact/retry
+      this.isLoading = false;
+    } catch (err) {
+      console.error('Webhook request failed', err);
+      this.isLoading = false;
+    }
   }
 
 

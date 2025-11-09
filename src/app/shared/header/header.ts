@@ -22,7 +22,14 @@ export class Header {
     '*': 'img/logo.png',                // Fallback
   };
 
+  private get isAppLoading(): boolean {
+    return document.body.classList.contains('app-loading');
+  }
+
   get logoSrc(): string {
+    if (this.isAppLoading) {
+      return 'img/logo.png';
+    }
     const url = this.router.url.split(/[?#]/)[0];   // "/foo/bar"
     const full = url.replace(/^\/+/, '');           // "foo/bar" oder ""
     const first = full.split('/')[0] || '';         // "foo" oder ""
@@ -43,6 +50,6 @@ export class Header {
   get showBackButton(): boolean {
     const url = this.router.url.split(/[?#]/)[0];
     const full = url.replace(/^\/+/, '');
-    return full === 'preferences';
+    return !this.isAppLoading && full === 'preferences';
   }
 }
